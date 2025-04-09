@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Login & Registration Form</title>
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="check" />
+      <div class="login form">
+        <header>Login</header>
+        <form id="loginForm" action="/login" method="post">
+          <input
+            type="text"
+            id="loginEmail"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+          />
+          <a href="#">Forgot password?</a>
+          <input type="submit" class="button" value="Login" />
+        </form>
+        <div class="signup">
+          <span class="signup"
+            >Don't have an account?
+            <label for="check"><a href="sign.html">Signup</a></label>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- <script>
+      // Function to save signup data to localStorage
+      function signup(name, email, password) {
+        const userData = localStorage.getItem("userData");
+        const users = userData ? JSON.parse(userData) : [];
+        users.push({ name, email, password });
+        localStorage.setItem("userData", JSON.stringify(users));
+      }
+
+      // Function to handle signup form submission
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const name = document.getElementById("signupName").value;
+          const email = document.getElementById("signupEmail").value;
+          const password = document.getElementById("signupPassword").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
+          if (password !== confirmPassword) {
+            alert("Passwords do not match!");
+            return;
+          }
+          signup(name, email, password);
+          alert("Signup successful!");
+          // Clear the form fields
+          document.getElementById("signupName").value = "";
+          document.getElementById("signupEmail").value = "";
+          document.getElementById("signupPassword").value = "";
+          document.getElementById("confirmPassword").value = "";
+        });
+
+      // Function to handle login form submission
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const email = document.getElementById("loginEmail").value;
+          const password = document.getElementById("loginPassword").value;
+          const userData = localStorage.getItem("userData");
+          const users = userData ? JSON.parse(userData) : [];
+          const userIndex = users.findIndex(
+            (user) => user.email === email && user.password === password
+          );
+          if (userIndex !== -1) {
+            alert("Login successful!");
+            // Clear the form fields
+            document.getElementById("loginEmail").value = "";
+            document.getElementById("loginPassword").value = "";
+            // Remove the user from the userData array (optional)
+            // users.splice(userIndex, 1);
+            // localStorage.setItem('userData', JSON.stringify(users));
+            // Redirect the user to the dashboard or home page
+          } else {
+            alert("Invalid email or password!");
+          }
+        });
+    </script> -->
+  </body>
+</html>
