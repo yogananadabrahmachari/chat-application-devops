@@ -27,4 +27,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: yogananadabrahmachari/chat-bot-master:latest
+        tags: chari9515/chat-application-devops:latest
