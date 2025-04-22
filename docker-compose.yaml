@@ -1,39 +1,16 @@
-version: '3.8'
-
 services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+
   chat-app:
     build: .
     container_name: chat-app
     ports:
       - "3000:3000"
-    environment:
-      - MONGO_URI=mongodb://mongo:27017/chatdb
     depends_on:
       - mongo
-    volumes:
-      - .:/app
-    networks:
-      - chat-network
-    dns:
-      - 8.8.8.8  # Google DNS
-      - 8.8.4.4  # Google DNS
-
-  mongo:
-    image: mongo:latest
-    container_name: mongo
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    networks:
-      - chat-network
-    dns:
-      - 8.8.8.8  # Google DNS
-      - 8.8.4.4  # Google DNS
-
-volumes:
-  mongo-data:
-
-networks:
-  chat-network:
-    driver: bridge
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/chatdb
