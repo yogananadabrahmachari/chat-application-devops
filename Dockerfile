@@ -1,5 +1,10 @@
-# Use Node.js image
 FROM node:18-alpine
+
+# Update apk repository
+RUN apk update
+
+# Install dependencies to compile native modules
+RUN apk add --no-cache python3 make g++
 
 # Create app directory
 WORKDIR /app
