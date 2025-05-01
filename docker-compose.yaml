@@ -1,9 +1,15 @@
+version: '3.8'
+
 services:
   mongo:
     image: mongo
     container_name: mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - chat-network
 
   chat-app:
     build: .
@@ -14,4 +20,13 @@ services:
       - mongo
     environment:
       - MONGO_URL=mongodb://mongo:27017/chatdb
-    command: ["node", "server.js"]  # Updated to use server.js
+    command: ["node", "server.js"]
+    networks:
+      - chat-network
+
+volumes:
+  mongo-data:
+
+networks:
+  chat-network:
+    driver: bridge
